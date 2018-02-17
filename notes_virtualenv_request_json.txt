@@ -1,0 +1,63 @@
+#Creating a Virtual Environment
+
+#Make a directory (folder) where my Virtual Environment will be saved
+#cd to the location or copy the path
+C:\Users\Dani\Documents\GitHub>
+
+#Make directory (I chose the name python_practice)
+>mkdir python_practice
+
+#To check whether you have the virtualenv installed in your system, type the following command:
+> virtualenv --version
+15.1.0
+
+#cd to the directory I just created, ex: python_practice
+> cd python_practice
+C:\Users\Dani\Documents\GitHub\python_practice>
+
+#Run the command virtualenv venv, see result in line 21
+C:\Users\Dani\Documents\GitHub\python_practice>virtualenv venv
+
+Using base prefix 'c:\\users\\dani\\appdata\\local\\programs\\python\\python36-32'
+New python executable in C:\Users\Dani\Documents\GitHub\python_practice\venv\Scripts\python.exe
+Installing setuptools, pip, wheel...done.
+
+#Run command
+>pip install requests
+#result
+Collecting requests
+  Downloading requests-2.18.4-py2.py3-none-any.whl (88kB)
+    100% |████████████████████████████████| 92kB 844kB/s
+Collecting idna<2.7,>=2.5 (from requests)
+  Downloading idna-2.6-py2.py3-none-any.whl (56kB)
+    100% |████████████████████████████████| 61kB 3.9MB/s
+Collecting chardet<3.1.0,>=3.0.2 (from requests)
+  Downloading chardet-3.0.4-py2.py3-none-any.whl (133kB)
+    100% |████████████████████████████████| 143kB 2.2MB/s
+Collecting certifi>=2017.4.17 (from requests)
+  Downloading certifi-2018.1.18-py2.py3-none-any.whl (151kB)
+    100% |████████████████████████████████| 153kB 3.3MB/s
+Collecting urllib3<1.23,>=1.21.1 (from requests)
+  Downloading urllib3-1.22-py2.py3-none-any.whl (132kB)
+    100% |████████████████████████████████| 133kB 2.2MB/s
+Installing collected packages: idna, chardet, certifi, urllib3, requests
+Successfully installed certifi-2018.1.18 chardet-3.0.4 idna-2.6 requests-2.18.4 urllib3-1.22
+
+#Make sure to get inside the virtualenv
+>virtualenv venv
+(ven) C:\Users\Dani\Documents\GitHub\python_practice>
+
+#Run pip install requests
+>pip install requests
+#Run
+>import requests
+#Run
+>>> r = requests.get('https://jobs.github.com/positions.json?description=python&location=new+york')
+>>> r.status_code
+200
+>>> r.headers['content-type']
+'application/json; charset=utf8'
+>>> r.encoding
+'utf-8'
+>>> r.text
+u'{"type":"User"...'
