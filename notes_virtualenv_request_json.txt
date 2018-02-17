@@ -47,10 +47,16 @@ Successfully installed certifi-2018.1.18 chardet-3.0.4 idna-2.6 requests-2.18.4 
 >virtualenv venv
 (ven) C:\Users\Dani\Documents\GitHub\python_practice>
 
-#Run pip install requests
+#Run pip install requests (this will either install them or show you you already have it)
 >pip install requests
-#Run
->import requests
+
+#Run python
+>python
+
+#Inside python run
+>>> import requests
+>>>
+
 #Run
 >>> r = requests.get('https://jobs.github.com/positions.json?description=python&location=new+york')
 >>> r.status_code

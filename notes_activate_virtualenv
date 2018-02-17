@@ -1,0 +1,27 @@
+#cd to the directory where the virtual env was created
+C:\Users\Dani>
+cd C:\Users\Dani\Documents\GitHub\python_practice\venv
+
+#Activate the Scripts
+Scripts\activate
+
+(venv) C:\Users\Dani\Documents\GitHub\python_practice\venv>
+
+#Run pip install request
+pip install request
+
+#Run  python inside the virtualenv
+python
+
+#You will then see(>>>), and here run the command import request
+import requests
+
+#Run your request
+>>> r = requests.get('https://jobs.github.com/positions.json?description=python&location=new+york')
+>>> r.status_code
+200
+>>> r.headers['content-type']
+'application/json;charset=utf-8'
+>>> r.encoding
+'utf-8'
+>>> r.text
