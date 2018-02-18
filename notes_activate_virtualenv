@@ -6,7 +6,7 @@ cd C:\Users\Dani\Documents\GitHub\python_practice\venv
 Scripts\activate
 
 (venv) C:\Users\Dani\Documents\GitHub\python_practice\venv>
-
+-
 #Run pip install request
 pip install request
 
