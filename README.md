@@ -6,7 +6,7 @@ Includes folders of different projects, this is hands-on experience to improve m
 * Running Scripts
 * Installing packages
 * Web Development with Flask
-  * Using tutorial from bradtraversy
+  * Built "MyFlaskApp, using tutorial from bradtraversy
 
 
  
