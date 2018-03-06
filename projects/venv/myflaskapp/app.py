@@ -4,7 +4,7 @@ from data import Articles
 
 app = Flask(__name__)
 
-Articles = Articles()
+# Articles = Articles()
 
 
 @app.route('/')
