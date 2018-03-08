@@ -14,9 +14,9 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 # app.config['MYSQL_PASSWORD'] = '123456'
 app.config['MYSQL_DB'] = 'myflaskapp'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # Display as a Dictionary
 # init MYSQL
-mysql = MySQL(app)
+mysql = MySQL(app)  # wrapped up my app, use this to create cursors &queries
 
 # Articles = Articles()
 
@@ -78,14 +78,14 @@ def register():
         name = form.name.data
         email = form.email.data
         username = form.username.data
-        password = sha256_crypt.encrypt(str(form.password.data))
+        password = sha256_crypt.encrypt(str(form.password.data))  # encrypted
 
         # Create cursor
         cur = mysql.connection.cursor()
 
         # Execute query
-        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)",
-                    (name, email, username, password))
+        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)",  # string- replacements
+                    (name, email, username, password))  # variables assigned in request form above.
 
         # Commit to DB
         mysql.connection.commit()
