@@ -120,11 +120,11 @@ def login():
 
             # Compare Passwords
             if sha256_crypt.verify(password_candidate, password):
-            app.logger.info('PASSWORD MATCHED')
+                app.logger.info('PASSWORD MATCHED')
         else:
             app.logger.inf('NO USER')
 
-            return render_template('login.html')
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
