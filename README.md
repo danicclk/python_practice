@@ -7,6 +7,5 @@ Includes folders of different projects, this is hands-on experience to improve m
 * Installing packages
 * Web Development with Flask
   * Built "MyFlaskApp, using tutorial from bradtraversy
-
-
+# Web Scraping: using "Scrapy"
  
