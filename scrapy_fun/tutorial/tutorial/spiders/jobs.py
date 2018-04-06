@@ -9,7 +9,7 @@ class JobsSpider(scrapy.Spider):  # define a class
   
    # call back method
     def parse(self, response):
-        urls = response.css('div.quote > span > a::attr(href)').extract() #change
+        urls = response.css('div.quote > span > a::attr(href)').extract() #CHANGE
         for url in urls:
             url = response.urljoin(url)
             yield scrapy.Request(url=url, callback=self.parse_details)
