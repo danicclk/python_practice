@@ -9,10 +9,10 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-###BOT_NAME = 'tutorial'
+BOT_NAME = 'tutorial'
 
-###SPIDER_MODULES = ['tutorial.spiders']
-###NEWSPIDER_MODULE = 'tutorial.spiders'
+SPIDER_MODULES = ['tutorial.spiders']
+NEWSPIDER_MODULE = 'tutorial.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -90,8 +90,8 @@
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 #Settings ScrapySplash 
-# -*- coding: utf-8 -*-
-SPLASH_URL = 'http://192.168.59.103:8050'
+#-*- coding: utf-8 -*-
+SPLASH_URL = 'http://127.0.0.1:8050/'
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
@@ -101,3 +101,4 @@ SPIDER_MIDDLEWARES = {
     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+##HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
