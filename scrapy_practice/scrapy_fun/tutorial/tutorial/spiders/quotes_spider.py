@@ -2,30 +2,34 @@ import scrapy
 from scrapy_splash import SplashRequest
 
 
-class QuotesSpider(scrapy.Spider):  # define a class
-    name = "quotesjs"  # define the variable, identifies the Spider. Must be unique.
-    #allowed_domains = ["toscrape.com"]
-    #start_urls = ["http://quotes.toscrape.com"]
-  
+class QuotesJSSpider(scrapy.Spider):
+    name = 'quotejs'
+
+    start_urls = ['https://www.indeed.com/q-developer-l-Evanston,-IL-jobs.html']
+
     def start_requests(self):
-        yield SplashRequest(
-            url = "http://quotes.toscrape.com/js",
-            callback=self.parse,
-        )
+        for url in self.start_urls:
+            yield SplashRequest(url, self.parse, args={'wait': 2})
 
     def parse(self, response):
-        for quote in response.css('div.quote'):
-            yield{
-                'text': response.css('span.text::text').extract_first(),
-                'author_name': response.css('small.author::text').extract_first(),
-                'tag': response.css('a.tag::text').extract(),
-         }
-        
-        # yield item 
-        # follow pagination link
-        #     this line just gets the relative url
-        # next_page_url = response.css('li.next > a::attr(href)').extract_first()
-        # if next_page_url: # spider will stop once there're no more pages
-        #    next_page_url = response.urljoin(next_page_url)
-        #     the spiderneeds to generate new request
-        #     yield scrapy.Request(url=next_page_url, callback=self.parse)
+        # follow links to job description page
+        for href in response.css('.clickcard .jobtitle::attr(href)'):
+            yield response.follow(href, self.parse_jobs)
+
+        # follow pagination links
+        for href in response.css('.pagination a:last-child::attr(href)'):
+            yield response.follow(href, self.parse)
+
+    def parse_jobs(self, response):
+        def extract_with_css(query):
+            if response.css(query).extract_first():
+                return response.css(query).extract_first().strip()
+            else:
+                return ''
+
+        yield {
+            # 'job_title': extract_with_css('.jobtitle::text'),
+            # 'company': extract_with_css('.company::text'),
+            # 'snip': extract_with_css('.snip::text'),
+            'page_title': extract_with_css('title::text')
+        }
