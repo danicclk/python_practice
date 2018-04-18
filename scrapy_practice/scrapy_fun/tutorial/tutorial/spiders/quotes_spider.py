@@ -5,7 +5,7 @@ from scrapy_splash import SplashRequest
 class QuotesJSSpider(scrapy.Spider):
     name = 'quotejs'
 
-    start_urls = ['https://www.indeed.com/q-developer-l-Evanston,-IL-jobs.html']
+    start_urls = ['https://illinoisjoblink.illinois.gov/ada/r/search/jobs?keywords=Developer&location=Chicago&radius=50']
 
     def start_requests(self):
         for url in self.start_urls:
